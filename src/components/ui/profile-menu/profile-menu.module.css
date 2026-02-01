@@ -10,6 +10,10 @@
   color: #f2f2f3;
 }
 
+.link:not(.link_active):hover {
+  color: #b8b8d1;
+}
+
 .button {
   text-decoration: none;
   display: block;
@@ -20,4 +24,5 @@
 
 .button:hover {
   cursor: pointer;
+  color: #b8b8d1 ;
 }
