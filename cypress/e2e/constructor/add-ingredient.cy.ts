@@ -11,7 +11,8 @@ describe('Конструктор бургера: добавление ингре
 
   it('добавляет начинку из списка в конструктор по кнопке "Добавить"', () => {
     // убеждаемся, что карточки ингредиентов есть
-    cy.get('[data-cy="ingredient-card"]').should('have.length.greaterThan', 0);
+    cy.get('[data-cy="ingredient-card"]').as('card');
+    cy.get('@card').should('have.length.greaterThan', 0);
 
     // берём конкретный ингредиент по имени из мока
     const ingredientName = 'Биокотлета из марсианской Магнолии';

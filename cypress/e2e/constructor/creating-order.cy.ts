@@ -49,7 +49,8 @@ describe('Конструктор бургера: процесс создания
       cy.get('[data-cy="ingredient-add"]').find('button').click();
     });
 
-    cy.get('[data-cy="constructor"]').should('contain', bunName);
+    cy.get('[data-cy="constructor"]').as('constructor');
+    cy.get('@constructor').should('contain', bunName);
 
     const ingredientName = 'Биокотлета из марсианской Магнолии';
 
@@ -57,19 +58,22 @@ describe('Конструктор бургера: процесс создания
       cy.get('[data-cy="ingredient-add"]').find('button').click();
     });
 
-    cy.get('[data-cy="constructor"]').should('contain', ingredientName);
+    cy.get('@constructor').should('contain', ingredientName);
 
     cy.get('[data-cy="create-order"]').find('button').click();
     cy.wait('@createOrder');
-    cy.get('[data-cy="order-modal"]').should('be.visible');
-    cy.get('[data-cy="order-modal"]')
+
+    cy.get('[data-cy="order-modal"]').as('order-modal');
+
+    cy.get('@order-modal').should('be.visible');
+    cy.get('@order-modal')
       .find('[data-cy="order-number"]')
       .should('have.text', '12345');
 
     cy.get('[data-cy="modal-close"]').click();
-    cy.get('[data-cy="order-modal"]').should('not.exist');
+    cy.get('@order-modal').should('not.exist');
 
-    cy.get('[data-cy="constructor"]').should('contain', 'Выберите булки');
-    cy.get('[data-cy="constructor"]').should('contain', 'Выберите начинку');
+    cy.get('@constructor').should('contain', 'Выберите булки');
+    cy.get('@constructor').should('contain', 'Выберите начинку');
   });
 });
