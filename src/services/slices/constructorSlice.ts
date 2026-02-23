@@ -40,7 +40,7 @@ const constructorSlice = createSlice({
         from < 0 ||
         to < 0 ||
         from >= state.ingredients.length ||
-        from >= state.ingredients.length
+        to >= state.ingredients.length
       ) {
         return
       }
